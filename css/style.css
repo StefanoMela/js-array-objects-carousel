@@ -1,0 +1,37 @@
+/* ! Reset */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ! Style */
+
+.slider {
+
+    margin: 0 auto;
+    height: 100vh;
+    border: 1px solid red;
+}
+
+.slides-container>img {
+
+    max-width: 250px;
+    aspect-ratio: 1;
+}
+
+.img {
+
+    display: none;
+}
+
+.active-img {
+
+    display: block;
+}
+
+.fa-solid {
+
+    cursor: pointer;
+}
