@@ -12,21 +12,21 @@
 
     margin: 0 auto;
     height: 100vh;
-    border: 1px solid red;
 }
 
 .slides-container>img {
 
-    max-width: 250px;
     aspect-ratio: 1;
+    max-width: 200px;
 }
 
-.img {
+.hidden{
 
     display: none;
 }
 
-.active-img {
+.shown
+ {
 
     display: block;
 }
