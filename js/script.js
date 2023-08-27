@@ -34,49 +34,56 @@ const nextButton = document.getElementById("go-next");
 const allImages = document.getElementsByClassName("img");
 let activeImg = 0;
 
-for (let i in images) {
-
-  let image = images[i];
-
-  imgContainer.innerHTML +=
-  `
-  <img src="./${image.image}" class="hidden" alt="${image.text}">
-
-  `
-};
 
 
-// NEXT BUTTON
-
-nextButton.addEventListener("click", function () {
-
-  const activeImgEL = allImages[activeImg];
-  activeImgEL.classList.toggle("shown");
-
-  activeImg++;
-
-  if (activeImg >= allImages.length) {
-    activeImg = 0;
-  }
-
-  const newActiveImg = allImages[activeImg];
-  newActiveImg.classList.toggle("shown");
-});
 
 
-previousButton.addEventListener("click", function () {
 
-  const activeImgEL = allImages[activeImg];
-  activeImgEL.classList.toggle("shown");
 
-  activeImg--;
 
-  if (activeImg < 0) {
 
-    activeImg = allImages.length - 1;
-  }
 
-  const newActiveImg = allImages[activeImg];
-  newActiveImg.classList.toggle("shown");
+
+// for (let i in images) {
+
+//   let image = images[i];
+
+//   imgContainer.innerHTML +=
+//   `
+//   <img src="./${image.image}" class="hidden" alt="${image.text}">
+//   `
+// };
+
+
+// // NEXT BUTTON
+
+// nextButton.addEventListener("click", function () {
+
+//   const activeImgEL = allImages[activeImg];
+//   activeImg.classList.toggle("shown", true);
+
+//   activeImg++;
+
+//   if (activeImg >= allImages.length) {
+//     activeImg = 0;
+//   }
+
+// });
+
+
+// previousButton.addEventListener("click", function () {
+
+//   const activeImgEL = allImages[activeImg];
+//   activeImgEL.classList.toggle("shown", false);
+
+//   activeImg--;
+
+//   if (activeImg < 0) {
+
+//     activeImg = allImages.length - 1;
+//   }
+
+//   const newActiveImg = allImages[activeImg];
+//   newActiveImg.classList.toggle("shown", false);
 
 })
