@@ -1,7 +1,7 @@
 const images = [
   {
     image: 'img/01.webp',
-    title: "Marvel's Spiderman Miles Morale",
+    title: "Marvel's Spiderman Miles Morales",
     text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
   },
   {
@@ -32,52 +32,53 @@ const imgContainer = document.getElementById("slides-container");
 const previousButton = document.getElementById("go-prev");
 const nextButton = document.getElementById("go-next");
 let activeImg = 0;
+let imagesHTML = "";
 
+// for (let i in images) {
 
-for (let i in images) {
+//   let image = images[i];
 
-  let image = images[i];
-
-  imgContainer.innerHTML +=
-    `
-  <img src="./${image.image}" class="hidden" alt="${image.text}">
-  `
-};
+//   imgContainer.innerHTML +=
+//   `
+//   <img src="./${image.image}" class="new-images">
+//   <h5>Title: <br> ${image.title}</h5>
+//   <p class="card-text">${image.text}</p>
+//   `
+// };
 
 // NEXT BUTTON
 
 nextButton.addEventListener('click', function () {
 
-  const allImages = document.querySelectorAll(".images");
+  const allImages = document.querySelectorAll(".img");
 
-  const activeSlideEl = allImages[activeImg];
-  activeSlideEl.classList.toggle("shown");
-
+  const activeSlide = allImages[activeImg];
+  activeSlide.classList.toggle("shown");
   activeImg++;
-
+  
   if (activeImg >= allImages.length) {
-    activeImg = 0;
-  }
 
-  const newActiveSlide = allImages[activeImg];
-  newActiveSlide.classList.toggle("shown");
+    activeImg = 0
+  };
+
+  const newActiveImg = allImages[activeImg];
+  newActiveImg.classList.toggle('shown');
 });
 
+// // # PULSANTE PREV
+// previousButton.addEventListener('click', function () {
 
-// # PULSANTE PREV
-previousButton.addEventListener('click', function () {
+//   const allImages = document.querySelectorAll(".images");
 
-  const allImages = document.querySelectorAll(".images");
+//   const activeSlideEl = allImages[activeImg];
+//   activeSlideEl.classList.toggle("shown");
 
-  const activeSlideEl = allImages[activeImg];
-  activeSlideEl.classList.toggle("shown");
+//   activeImg--;
 
-  activeImg--;
+//   if (activeImg < 0) {
+//     activeImg = allImages.length - 1;
+//   }
 
-  if (activeImg < 0) {
-    activeImg = allImages.length - 1;
-  }
-
-  const newActiveSlide = allImages[activeImg];
-  newActiveSlide.classList.toggle("shown");
-});
+//   const newActiveSlide = allImages[activeImg];
+//   newActiveSlide.classList.toggle("shown");
+// });
