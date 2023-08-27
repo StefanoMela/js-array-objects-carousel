@@ -31,59 +31,53 @@ const images = [
 const imgContainer = document.getElementById("slides-container");
 const previousButton = document.getElementById("go-prev");
 const nextButton = document.getElementById("go-next");
-const allImages = document.getElementsByClassName("img");
 let activeImg = 0;
 
 
+for (let i in images) {
+
+  let image = images[i];
+
+  imgContainer.innerHTML +=
+    `
+  <img src="./${image.image}" class="hidden" alt="${image.text}">
+  `
+};
+
+// NEXT BUTTON
+
+nextButton.addEventListener('click', function () {
+
+  const allImages = document.querySelectorAll(".images");
+
+  const activeSlideEl = allImages[activeImg];
+  activeSlideEl.classList.toggle("shown");
+
+  activeImg++;
+
+  if (activeImg >= allImages.length) {
+    activeImg = 0;
+  }
+
+  const newActiveSlide = allImages[activeImg];
+  newActiveSlide.classList.toggle("shown");
+});
 
 
+// # PULSANTE PREV
+previousButton.addEventListener('click', function () {
 
+  const allImages = document.querySelectorAll(".images");
 
+  const activeSlideEl = allImages[activeImg];
+  activeSlideEl.classList.toggle("shown");
 
+  activeImg--;
 
+  if (activeImg < 0) {
+    activeImg = allImages.length - 1;
+  }
 
-
-
-// for (let i in images) {
-
-//   let image = images[i];
-
-//   imgContainer.innerHTML +=
-//   `
-//   <img src="./${image.image}" class="hidden" alt="${image.text}">
-//   `
-// };
-
-
-// // NEXT BUTTON
-
-// nextButton.addEventListener("click", function () {
-
-//   const activeImgEL = allImages[activeImg];
-//   activeImg.classList.toggle("shown", true);
-
-//   activeImg++;
-
-//   if (activeImg >= allImages.length) {
-//     activeImg = 0;
-//   }
-
-// });
-
-
-// previousButton.addEventListener("click", function () {
-
-//   const activeImgEL = allImages[activeImg];
-//   activeImgEL.classList.toggle("shown", false);
-
-//   activeImg--;
-
-//   if (activeImg < 0) {
-
-//     activeImg = allImages.length - 1;
-//   }
-
-//   const newActiveImg = allImages[activeImg];
-//   newActiveImg.classList.toggle("shown", false);
-
-})
+  const newActiveSlide = allImages[activeImg];
+  newActiveSlide.classList.toggle("shown");
+});
