@@ -31,6 +31,7 @@ const images = [
 const imgContainer = document.getElementById("slides-container");
 const previousButton = document.getElementById("go-prev");
 const nextButton = document.getElementById("go-next");
+const thumbnailsContainer = document.getElementById("thumbnails-container");
 let activeImg = 0;
 let imagesHTML = "";
 
@@ -46,24 +47,101 @@ let imagesHTML = "";
 //   `
 // };
 
+
+images.forEach((image, index) => {
+
+  const slideEL = document.createElement("div");
+  slideEL.classList.add("slide");
+
+
+    // aggiungo classe active alla prima img
+  if(index == activeImg) {slideEL.classList.add("active")}
+
+  slideEL.innerHTML += 
+  `
+  <div class="img-wrapper">
+  <img src="./${image.image}">
+  <h5>Title: <br> ${image.title}</h5>
+  <p class="card-text">${image.text}</p>
+  </div>
+  `
+  image.HTMLnode = slideEL;
+  imgContainer.append(slideEL);
+
+  const thumbnailsEl = document.createElement("div");
+  thumbnailsEl.classList.add("thumb");
+  thumbnailsEl.innerHTML = `<img src="./${image.image}">`
+  thumbnailsEl.setAttribute("data-index", index);
+  thumbnailsEl.addEventListener("click", function (){
+    const index = this.getAttribute("data-index");
+    goToSlide(index);
+  })
+
+  thumbnailsContainer.append(thumbnailsEl);
+});
+
+
+nextButton.addEventListener("click", goNext);
+
+function goNext() {
+
+  let nextIndex = activeImg + 1;
+
+  if (nextIndex >= images.length) nextIndex = 0;
+
+  goToSlide(nextIndex);
+
+};
+
+previousButton.addEventListener("click", goPrev);
+
+function goPrev () {
+
+  let prevIndex = activeImg - 1;
+
+
+  if (prevIndex < 0) prevIndex = images.length - 1;
+
+  goToSlide(prevIndex)
+
+};
+
+
+function goToSlide(index) {
+
+  const oldSlide = images[activeImg].HTMLnode;
+  oldSlide.classList.remove("active");
+
+  activeImg = index;
+
+  let newActiveImg = images[activeImg].HTMLnode;
+  newActiveImg = newActiveImg.classList.add("active");
+}
+
+
+// AUTOPLAY
+// setInterval(goNext, 1000);
+
+
+
 // NEXT BUTTON
 
-nextButton.addEventListener('click', function () {
+// nextButton.addEventListener('click', function () {
 
-  const allImages = document.querySelectorAll(".img");
+//   const allImages = document.querySelectorAll(".img");
 
-  const activeSlide = allImages[activeImg];
-  activeSlide.classList.toggle("shown");
-  activeImg++;
+//   const activeSlide = allImages[activeImg];
+//   activeSlide.classList.toggle("shown");
+//   activeImg++;
   
-  if (activeImg >= allImages.length) {
+//   if (activeImg >= allImages.length) {
 
-    activeImg = 0
-  };
+//     activeImg = 0
+//   };
 
-  const newActiveImg = allImages[activeImg];
-  newActiveImg.classList.toggle('shown');
-});
+//   const newActiveImg = allImages[activeImg];
+//   newActiveImg.classList.toggle('shown');
+// });
 
 // // # PULSANTE PREV
 // previousButton.addEventListener('click', function () {
