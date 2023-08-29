@@ -59,9 +59,9 @@ images.forEach((image, index) => {
 
   slideEL.innerHTML += 
   `
-  <div class="img-wrapper">
   <img src="./${image.image}">
-  <h5>Title: <br> ${image.title}</h5>
+  <div class="carousel-caption d-none d-md-block">
+  <h5>${image.title}</h5>
   <p class="card-text">${image.text}</p>
   </div>
   `
@@ -118,9 +118,46 @@ function goToSlide(index) {
   newActiveImg = newActiveImg.classList.add("active");
 }
 
+// ### AUTOPLAY
+const startAutoplayButton = document.getElementById('start-autoplay');
+const stopAutoplayButton = document.getElementById('stop-autoplay');
+const reverseAutoplayButton = document.getElementById('reverse-autoplay');
 
-// AUTOPLAY
-// setInterval(goNext, 1000);
+// * SETTO LE VARIABILI PER GESTIRE L'AUTOPLAY
+let autoplayInterval = false;
+let autoplayForward = true;
+
+// * ATTIVO L'INTERVAL IN BASE ALLA DIRECTION DELL'AUTOPLAY
+
+function setAutoplay() {
+  if (!autoplayInterval) {
+    if (autoplayForward) {
+      autoplayInterval = setInterval(goNext, 1000);
+    } else {
+      autoplayInterval = setInterval(goPrev, 1000);
+    }
+  }
+}
+
+// * CLEARO L'INTERVAL
+function stopAutoplay() {
+  if (autoplayInterval) {
+    clearInterval(autoplayInterval);
+    autoplayInterval = false;
+  }
+}
+
+// * INVERTO LA DIRECTION
+function reverseAutoplay() {
+  stopAutoplay();
+  autoplayForward = !autoplayForward;
+  setAutoplay();
+}
+
+// * GESTISCO I CLICK SUI PULSANTI AUTOPLAY
+startAutoplayButton.addEventListener('click', setAutoplay);
+stopAutoplayButton.addEventListener('click', stopAutoplay);
+reverseAutoplayButton.addEventListener('click', reverseAutoplay);
 
 
 

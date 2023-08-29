@@ -19,12 +19,20 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="wrapper">
+    <div class="buttons-container mb-4">
+      <button class="btn btn-outline-dark" id="start-autoplay">
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <button class="btn btn-outline-dark" id="stop-autoplay">
+        <i class="fa-solid fa-stop"></i>
+      </button>
+      <button class="btn btn-outline-dark" id="reverse-autoplay">
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+      </button>
+    </div>
     <!-- SLIDER -->
-    <div class="slider d-flex">
-      <div id="go-prev" class="controls arrow-left">
-        <i class="fa-solid fa-chevron-left fa-2x"></i>
-      </div>
+    <div class="slider">
       <!-- SLIDES -->
       <!-- MILESTONE 0-->
       <div id="slides-container" class="slides-container">
@@ -33,12 +41,15 @@
           <img src="./img/03.webp" class="img hidden" alt="">
           <img src="./img/04.webp" class="img hidden" alt="">
           <img src="./img/05.webp" class="img hidden" alt=""> -->
-        </div>
+      </div>
       <div id="go-next" class="controls arrow-right">
         <i class="fa-solid fa-chevron-right fa-2x"></i>
       </div>
-      <div class="thumbnails-slider" id="thumbnails-container"></div>
+      <div id="go-prev" class="controls arrow-left">
+        <i class="fa-solid fa-chevron-left fa-2x"></i>
+      </div>
     </div>
+    <div class="slider-thumbnails" id="thumbnails-container"></div>
   </div>
   <!-- BS SCRIPT -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
